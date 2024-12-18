@@ -7,7 +7,7 @@ email: rodrigo.ribeiro@ufop.edu.br
 keywords: latex, org-mode, writing
 lang: en
 subtitle: Construção de Compiladores I
-title: Trabalho prático 1 - Análise léxica.
+title: Trabalho prático 1 - Análise léxica e sintática descendente recursiva.
 ---
 
 ```{=org}
@@ -98,15 +98,16 @@ nos repositórios após a data limite.
 # 2. Especificação técnica do trabalho
 
 Ao longo do semestre será construído um compilador para a linguagem
-lang. Assim, neste primeiro trabalho pede-se que seja implementado o
-analisador léxico desta linguagem.
+lang. Assim, neste primeiro trabalho pede-se que sejam implementados 
+os analisadores léxico e sintático descendente recursivo desta 
+linguagem.
 
-Deve-se implementar um programa de teste que usa o analisador léxico
-implementado. Tal programa irá receber como entrada um arquivo contendo
-um programa na linguagem e deverá imprimir, na saída padrão, a sequência
-de tokens produzido pelo analisador léxico, um token por linha.
+O executável de sua ferramenta deve suportar as seguintes opções em 
+linha de comando:
 
-Por exemplo, para o programa
+* `--lexer`: executa apenas o analisador léxico de lang, imprimindo 
+todos os tokens encontrados na saída padrão. Por exemplo, para o 
+programa
 
 ```{=latex}
 \begin{verbatim}
@@ -143,10 +144,22 @@ INT:10
 ...
 \end{verbatim}
 ```
-Espera-se que o programa produzido forneça uma interface de linha de
-comandos que receba o arquivo de entrada e produza mensagens de erro /
-ajuda de forma adequada.
+* `--recursive`: executa o analisador léxico e o analisador sintático 
+descendente recursivo sob a lista de tokens produzido pelo analisador 
+léxico. Como resultado, seu programa deve imprimir uma representação 
+visual da árvore de sintaxe do código processado. Para desenvolvimento 
+do analisador, você deverá utilizar a biblioteca de combinadores 
+presente no repositório da disciplinas (módulo `Parser.Recursive.SimpleCombinators`).
+Uma maneira prática de utilizar uma representação visual para 
+árvores é utilizar a função 
+`drawTree :: Tree String -> String`, do módulo `Data.Tree`. O uso de 
+representações geradas automaticamente pelo compilador GHC através 
+de uma instância da classe `Show` não serão aceitas.
+
+* `--help`: imprime uma mensagem de ajuda mostrando as diferentes 
+opções suportadas por seu compilador.
+
 
 # 3. Entrega do Trabalho
 
-A data da entrega do trabalho será até o dia **11 de agosto de 2024**.
+A data da entrega do trabalho será até o dia **19 de janeiro de 2025**.
